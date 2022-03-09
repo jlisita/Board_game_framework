@@ -41,7 +41,7 @@ bool Board::existSquare(int raw, int column) const
 
 Square* Board::getSquare(int raw, int column) const
 {
-	if(existSquare(raw, column))
+	if(!existSquare(raw, column))
 	{
 		return NULL;
 	}
@@ -88,7 +88,7 @@ void Board::print(bool reversed) const
 			{
 				if(m_squares[i][j].isOccupied()==true)
 				{
-					m_squares[i][j].getPiece();
+					cout << *(m_squares[i][j].getPiece());
 					cout << "  | ";
 				}
 				else
@@ -128,7 +128,7 @@ void Board::print(bool reversed) const
 			{
 				if(m_squares[i][j].isOccupied()==true)
 				{
-					m_squares[i][j].getPiece();
+					cout << *(m_squares[i][j].getPiece());
 					cout << "  | ";
 				}
 				else

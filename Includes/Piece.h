@@ -31,5 +31,7 @@ protected:
 	int m_column;
 };
 
+std::ostream& operator<<(std::ostream& stream, Piece& piece);
+
 
 #endif

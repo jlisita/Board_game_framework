@@ -34,5 +34,11 @@ void Piece::setColumn(int column)
 	m_column = column;
 }
 
+std::ostream& operator<<(std::ostream& stream, Piece& piece)
+{
+	piece.print(stream);
+	return stream;
+}
+
 
 
