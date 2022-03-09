@@ -5,7 +5,8 @@
 
 using namespace std;
 
-Piece::Piece()
+Piece::Piece(int initialRaw, int initialColumn): 
+m_raw(initialRaw), m_column(initialColumn)
 {
 }
 

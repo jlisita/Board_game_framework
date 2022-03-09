@@ -33,9 +33,22 @@ Board::~Board()
 	delete m_squares;
 }
 
-Square Board::getSquare(int i, int j) const
+bool Board::existSquare(int raw, int column) const
 {
-	return m_squares[i][j];
+	return raw >= 0 && raw < m_nbRaw && column >= 0  && column < m_nbColumn;
+
+}
+
+Square* Board::getSquare(int raw, int column) const
+{
+	if(existSquare(raw, column))
+	{
+		return NULL;
+	}
+	else
+	{
+		return &m_squares[raw][column];
+	}
 }
 
 void Board::print(bool reversed) const
@@ -60,7 +73,6 @@ void Board::print(bool reversed) const
 
 	if(!reversed)
 	{
-
 		for(int i(m_nbRaw-1); i >= 0 ; i--)
 		{
 			cout << rankIndex[i];

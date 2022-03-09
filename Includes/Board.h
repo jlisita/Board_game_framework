@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "Square.h"
+#include "Piece.h"
 
 class Board
 {
@@ -13,7 +14,9 @@ public:
 
 	~Board();
 
-	Square getSquare(int i, int j) const;
+	bool existSquare(int raw, int column) const;
+
+	Square* getSquare(int raw, int column) const;
 
 	void print(bool reversed) const;
 

@@ -10,9 +10,13 @@ public:
 
 	Square();
 
-	bool isOccupied();
+	bool isOccupied() const;
 
-	Piece* getPiece();
+	Piece* getPiece() const;
+
+	void addPiece(Piece* piece);
+
+	Piece* removePiece();
 
 protected:
 

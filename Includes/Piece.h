@@ -9,7 +9,7 @@ class Piece
 
 public:
 
-	Piece();
+	Piece(int initialRaw, int initialColumn);
 
 	virtual ~Piece();
 
