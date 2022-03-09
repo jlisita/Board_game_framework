@@ -16,7 +16,13 @@ public:
 
 	bool existSquare(int raw, int column) const;
 
-	Square* getSquare(int raw, int column) const;
+	bool isOccupied(int raw, int column) const;
+
+	Piece* getPiece(int raw, int column) const;
+
+	void addPiece(int raw, int column, Piece* piece);
+
+	Piece* removePiece(int raw, int column);
 
 	void print(bool reversed) const;
 

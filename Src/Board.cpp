@@ -39,17 +39,28 @@ bool Board::existSquare(int raw, int column) const
 
 }
 
-Square* Board::getSquare(int raw, int column) const
+bool Board::isOccupied(int raw, int column) const
 {
-	if(!existSquare(raw, column))
-	{
-		return NULL;
-	}
-	else
-	{
-		return &m_squares[raw][column];
-	}
+
+	return m_squares[raw][column].isOccupied();
 }
+
+Piece* Board::getPiece(int raw, int column) const
+{
+	return m_squares[raw][column].getPiece();
+}
+
+void Board::addPiece(int raw, int column, Piece* piece)
+{
+	m_squares[raw][column].addPiece(piece);
+}
+
+Piece* Board::removePiece(int raw, int column)
+{
+	return m_squares[raw][column].removePiece();
+}
+
+
 
 void Board::print(bool reversed) const
 {
