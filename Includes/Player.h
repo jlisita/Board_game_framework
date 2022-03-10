@@ -14,11 +14,13 @@ class Player
 
 public:
 
-	Player(std::string name);
+	Player(std::string name, PieceColor color);
 
-	~Player();
+	virtual ~Player();
 
 	std::string getName() const;
+
+	PieceColor getColor() const;
 
 	void addPiece(std::string name, Piece* piece);
 
@@ -27,6 +29,7 @@ public:
 protected:
 
 	std::string m_name;
+	PieceColor m_color;
 	std::map<std::string,Piece*> m_pieces;
 };
 

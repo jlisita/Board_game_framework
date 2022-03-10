@@ -6,7 +6,7 @@
 using namespace std;
 
 
-Player::Player(std::string name): m_name(name)
+Player::Player(std::string name, PieceColor color): m_name(name), m_color(color)
 {
 }
 
@@ -19,8 +19,14 @@ std::string Player::getName() const
 	return m_name;
 }
 
+PieceColor Player::getColor() const
+{
+	return m_color;
+}
+
 void Player::addPiece(std::string name, Piece* piece)
 {	
+	m_pieces[name] = piece;
 }
 
 void Player::placeOnBoard(Board* board)

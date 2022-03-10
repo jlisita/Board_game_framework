@@ -5,8 +5,8 @@
 
 using namespace std;
 
-Piece::Piece(int initialRaw, int initialColumn): 
-m_raw(initialRaw), m_column(initialColumn)
+Piece::Piece(int initialRaw, int initialColumn, PieceColor color): 
+m_raw(initialRaw), m_column(initialColumn), m_color(color)
 {
 }
 
@@ -32,6 +32,11 @@ void Piece::setRaw(int raw)
 void Piece::setColumn(int column)
 {
 	m_column = column;
+}
+
+PieceColor Piece::getColor() const
+{
+	return m_color;
 }
 
 std::ostream& operator<<(std::ostream& stream, Piece& piece)
