@@ -26,9 +26,14 @@ PieceColor Player::getColor() const
 
 void Player::addPiece(std::string name, Piece* piece)
 {	
-	m_pieces[name] = piece;
+	m_piecesList[name] = piece;
 }
 
 void Player::placeOnBoard(Board* board)
 {
+}
+
+bool Player::enterCommand()
+{
+	return true;
 }

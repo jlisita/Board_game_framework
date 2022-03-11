@@ -13,22 +13,26 @@ Game::~Game()
 {
 }
 
-void Game::print() const
-{	
-}
-
 int Game::match()
 {
+
 	return 0;
 }
 
 int Game::turn()
 {
+
 	return 0;
 }
 
 void Game::rotatePlayer()
 {
+}
+
+std::ostream& operator<<(std::ostream& stream, Game& game)
+{
+	game.print(stream);
+	return stream;
 }
 
 

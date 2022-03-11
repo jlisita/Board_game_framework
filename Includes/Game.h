@@ -1,6 +1,8 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <fstream>
+
 #include "Player.h"
 #include "Board.h"
 
@@ -13,7 +15,7 @@ public:
 
 	virtual ~Game();
 
-	void print() const;
+	virtual void print(std::ostream& stream) const = 0;
 
 	int match();
 
@@ -21,13 +23,11 @@ public:
 
 	void rotatePlayer();
 
-	virtual int initialize() = 0;
-
 	virtual bool testEndOfMatch() const = 0;
 
 	virtual bool nextMove() = 0;
 
-	virtual bool getCommand() = 0;
+	virtual int updateGame() = 0;
 
 
 protected:
@@ -42,3 +42,5 @@ protected:
 
 
 #endif
+
+std::ostream& operator<<(std::ostream& stream, Game& game);
