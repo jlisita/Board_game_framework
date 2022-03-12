@@ -60,6 +60,85 @@ Piece* Board::removePiece(int raw, int column)
 	return m_squares[raw][column].removePiece();
 }
 
+bool Board::isEmptyBetween(int i, int j, int k, int l) const
+{
+	int n,m;
+
+	if(k-i==0) // horizontal move
+	{
+		if(l-j>0) // from left to right
+		{
+			for(n=j+1;n<l;n++)
+			{
+				if(isOccupied(i,n))
+					return false;
+			}
+		}
+		else // from right to left
+		{
+			for(n=j-1;n>l;n--)
+			{
+				if(isOccupied(i,n))
+					return false;
+			}
+		}
+	}
+	else if(l-j==0) // vertical move
+	{
+		if(k-i>0) // from down to up
+		{
+			for(m=i+1;m<k;m++)
+			{
+				if(isOccupied(m,j))
+					return false;	
+			}
+		}
+		else // from up to down
+		{
+			for(m=i-1;m>k;m--)
+			{
+				if(isOccupied(m,j))
+					return false;			
+			}
+		}
+	}
+	else // diagonal move
+	{
+		if(k-i>0 && l-j>0) // from down/left to up/right
+		{
+			for(n=1;n<k-i;n++)
+			{
+				if(isOccupied(i+n,j+n))
+					return false;
+			}
+		}
+		else if(k-i>0 && l-j<0) // from down/right to up/left
+		{
+			for(n=1;n<k-i;n++)
+			{
+				if(isOccupied(i+n,j-n))
+					return false;
+			}
+		}
+		else if(k-i<0 && l-j>0 ) // from up/left to down/right
+		{
+			for(n=1;n<abs(k-i);n++)
+			{
+				if(isOccupied(i-n,j+n))
+					return false;
+			}
+		}
+		else if(k-i<0 && l-j<0) // from up/right to down/left
+		{
+			for(n=1;n<abs(k-i);n++)
+			{
+				if(isOccupied(i-n,j-n))
+					return false;
+			}
+		}
+	}
+	return true;
+}
 
 
 void Board::print(bool reversed) const

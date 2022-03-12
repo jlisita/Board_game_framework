@@ -47,6 +47,6 @@ void Player::placeOnBoard(Board* board)
 bool Player::enterCommand()
 {
 	cout << m_name << ": enter your move:";
-	cin >> m_command;
+	getline(cin, m_command);
 	return testCommand();
 }

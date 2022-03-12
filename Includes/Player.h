@@ -30,7 +30,7 @@ public:
 
 	virtual void initializePiecesList() = 0;
 
-	virtual bool testCommand() const = 0;
+	virtual bool testCommand() = 0;
 
 protected:
 

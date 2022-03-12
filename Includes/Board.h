@@ -24,6 +24,8 @@ public:
 
 	Piece* removePiece(int raw, int column);
 
+	bool isEmptyBetween(int i, int j, int k, int l) const;
+
 	void print(bool reversed) const;
 
 
