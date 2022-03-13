@@ -45,5 +45,60 @@ std::ostream& operator<<(std::ostream& stream, Piece& piece)
 	return stream;
 }
 
+bool isForward(int i, int j)
+{
+	return	(i>0) && (j==0);
+}
+
+bool isBack(int i, int j)
+{
+	return (i<0) && (j==0);
+}
+
+bool isLeft(int i, int j)
+{
+	return (i==0) && (j<0);
+}
+
+bool isRight(int i, int j)
+{
+	return (i==0) && (j>0);
+}
+
+bool isForwardRight(int i, int j)
+{
+	return (i>0) && (j>0) && (i==j);
+}
+
+bool isForwardLeft(int i, int j)
+{
+	return (i>0) && (j<0) && (i==-j);
+}
+
+bool isBackRight(int i, int j)
+{
+	return (i<0) && (j>0) && (i==-j);
+}
+
+bool isBackLeft(int i, int j)
+{
+	return (i<0) && (j<0) && (i==j);
+}
+
+bool isDiagonal(int i, int j)
+{
+	return isForwardRight(i,j) && isForwardLeft(i,j) && isBackRight(i,j) && isBackLeft(i,j);
+}
+
+bool isLateral(int i, int j)
+{
+	return isForward(i,j) && isBack(i,j) && isLeft(i,j) && isBack(i,j);
+}
+
+bool isOneSquare(int i, int j)
+{
+	return  ( ((i==1) || (i==-1))  && ( (j==0) || (j==1) || (j==-1) ) )  ||  ( (i==0) && ((j==1) || (j==-1)) );
+}
+
 
 

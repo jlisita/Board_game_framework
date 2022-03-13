@@ -41,5 +41,28 @@ protected:
 
 std::ostream& operator<<(std::ostream& stream, Piece& piece);
 
+bool isForward(int i, int j);
+
+bool isBack(int i, int j);
+
+bool isLeft(int i, int j);
+
+bool isRight(int i, int j);
+
+bool isForwardRight(int i, int j);
+
+bool isForwardLeft(int i, int j);
+
+bool isBackRight(int i, int j);
+
+bool isBackLeft(int i, int j);
+
+bool isDiagonal(int i, int j);
+
+bool isLateral(int i, int j);
+
+bool isOneSquare(int i, int j);
+
+
 
 #endif
