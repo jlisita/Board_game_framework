@@ -2,6 +2,7 @@
 #define PIECE_H
 
 #include <fstream>
+#include <vector>
 
 
 enum PieceColor
@@ -26,16 +27,25 @@ public:
 
 	void setColumn(int column);
 
+	int getLastRaw() const;
+
+	int getLastColumn() const;
+
 	PieceColor getColor() const;
+
+	void updatePosition(int i, int j);
 
 	virtual bool isAllowedMove(int i, int j) const = 0;
 
 	virtual void print(std::ostream& stream) const = 0;
 
+
 protected:
 
 	int m_raw;
 	int m_column;
+	std::vector<int> m_historyRaw;
+	std::vector<int> m_historyColumn;
 	PieceColor m_color;
 };
 

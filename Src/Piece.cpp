@@ -39,6 +39,24 @@ PieceColor Piece::getColor() const
 	return m_color;
 }
 
+int Piece::getLastRaw() const
+{
+	return m_historyRaw.back();
+}
+
+int Piece::getLastColumn() const
+{
+	return m_historyColumn.back();
+}
+
+void Piece::updatePosition(int i, int j)
+{
+	m_historyRaw.push_back(m_raw);
+	m_historyColumn.push_back(m_column);
+	m_raw = i;
+	m_column = j;
+}
+
 std::ostream& operator<<(std::ostream& stream, Piece& piece)
 {
 	piece.print(stream);
