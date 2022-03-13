@@ -12,6 +12,13 @@ all: $(EXEC)
 prog: $(OBJ)
 	$(CC) -o $@ $^ $(LDFLAGS)
 
+
+$(SRCDIR)/Game.o: $(HEADDIR)/Board.h $(HEADDIR)/Player.h 
+
+$(SRCDIR)/Board.o: $(HEADDIR)/Piece.h $(HEADDIR)/Square.h
+
+$(SRCDIR)/Player.o: $(HEADDIR)/Piece.h $(HEADDIR)/Board.h
+
 $(SRCDIR)/%.o: $(SRCDIR)/%.cpp $(HEADDIR)/%.h
 	$(CC) -o $@ -c $< $(CFLAGS)
 
