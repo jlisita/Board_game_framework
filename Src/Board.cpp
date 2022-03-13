@@ -60,6 +60,21 @@ Piece* Board::removePiece(int raw, int column)
 	return m_squares[raw][column].removePiece();
 }
 
+void Board::update() 
+{
+	for(int i=0;i<m_nbRaw;i++)
+	{
+		for(int j=0;j<m_nbColumn;j++)
+		{
+			if(m_squares[i][j].isOccupied())
+			{
+				m_squares[i][j].getPiece()->updatePosition(i,j);
+			}
+		}
+	}
+}
+
+
 bool Board::isEmptyBetween(int i, int j, int k, int l) const
 {
 	int n,m;

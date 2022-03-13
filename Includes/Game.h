@@ -27,7 +27,9 @@ public:
 
 	virtual bool nextMove() = 0;
 
-	virtual int updateGame() = 0;
+	virtual void makeMove() = 0;
+
+	virtual bool canMove(int i, int j, int k, int l) const = 0;
 
 
 protected:

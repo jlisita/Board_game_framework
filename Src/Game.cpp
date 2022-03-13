@@ -57,7 +57,9 @@ int Game::turn()
 
 	}while(!validMove);
 
-	updateGame();
+	makeMove();
+
+	m_board.update();
 
 	return 0;
 }
