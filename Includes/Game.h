@@ -31,6 +31,8 @@ public:
 
 	virtual bool canMove(int i, int j, int k, int l) const = 0;
 
+	virtual bool testCommand(std::string command) = 0;
+
 
 protected:
 

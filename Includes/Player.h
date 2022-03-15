@@ -22,15 +22,17 @@ public:
 
 	PieceColor getColor() const;
 
+	std::string getCommand() const;
+
+	bool isAbandoning() const;
+
 	void addPiece(std::string name, Piece* piece);
 
 	void placeOnBoard(Board* board);
 
-	bool enterCommand();
+	void enterCommand();
 
 	virtual void initializePiecesList() = 0;
-
-	virtual bool testCommand() = 0;
 
 protected:
 
@@ -38,6 +40,7 @@ protected:
 	PieceColor m_color;
 	std::map<std::string,Piece*> m_piecesList;
 	std::string m_command;
+	bool m_abandonment;
 };
 
 #endif

@@ -47,12 +47,28 @@ int Game::turn()
 	{
 		do
 		{
-			validCommand = m_currentPlayer->enterCommand();
+			m_currentPlayer->enterCommand();
+			validCommand = testCommand(m_currentPlayer->getCommand());
 
-		}while(!validCommand);
+			if(!validCommand)
+			{
+				cout << "invalid command" << endl;
+			}
 
+		}while(!validCommand && !m_currentPlayer->isAbandoning());
 
-		validMove = nextMove();
+		if(m_currentPlayer->isAbandoning())
+		{
+			return 0;
+		}
+		else
+		{
+			validMove = nextMove();
+			if(!validMove)
+			{
+				cout << "Invalid Move" << endl;
+			}
+		}
 
 
 	}while(!validMove);

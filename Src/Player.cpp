@@ -7,7 +7,7 @@
 using namespace std;
 
 
-Player::Player(std::string name, PieceColor color): m_name(name), m_color(color)
+Player::Player(std::string name, PieceColor color): m_name(name), m_color(color), m_abandonment(false)
 {
 }
 
@@ -30,6 +30,17 @@ PieceColor Player::getColor() const
 	return m_color;
 }
 
+std::string Player::getCommand() const
+{
+	return m_command;
+}
+
+bool Player::isAbandoning() const
+{
+	return m_abandonment;
+}
+
+
 void Player::addPiece(std::string name, Piece* piece)
 {	
 	m_piecesList[name] = piece;
@@ -44,9 +55,12 @@ void Player::placeOnBoard(Board* board)
 	}
 }
 
-bool Player::enterCommand()
+void Player::enterCommand()
 {
 	cout << m_name << ": enter your move:";
 	getline(cin, m_command);
-	return testCommand();
+	if(m_command == "abandon")
+	{
+		m_abandonment = true;
+	}
 }

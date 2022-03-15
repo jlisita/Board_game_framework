@@ -17,8 +17,6 @@ public:
 
 	virtual void initializePiecesList();
 
-	virtual bool testCommand();
-
 protected:
 
 	bool m_isChess;
@@ -26,8 +24,7 @@ protected:
 	bool m_isStalemate;
 	bool m_isCastling;
 	bool m_hasCastled;
-	bool m_abandonment;
-
+	
 };
 
 #endif
