@@ -105,12 +105,12 @@ bool isBackLeft(int i, int j)
 
 bool isDiagonal(int i, int j)
 {
-	return isForwardRight(i,j) && isForwardLeft(i,j) && isBackRight(i,j) && isBackLeft(i,j);
+	return isForwardRight(i,j) || isForwardLeft(i,j) || isBackRight(i,j) || isBackLeft(i,j);
 }
 
 bool isLateral(int i, int j)
 {
-	return isForward(i,j) && isBack(i,j) && isLeft(i,j) && isBack(i,j);
+	return isForward(i,j) || isBack(i,j) ||isLeft(i,j) || isBack(i,j);
 }
 
 bool isOneSquare(int i, int j)
