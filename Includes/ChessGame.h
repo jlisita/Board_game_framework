@@ -21,6 +21,8 @@ public:
 
 	virtual bool canMove(int i, int j, int k, int l) const;
 
+	virtual bool testCommand(std::string command);
+
 private:
 
 	std::string RecordedMoves;
