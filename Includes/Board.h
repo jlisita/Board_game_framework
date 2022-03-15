@@ -39,4 +39,7 @@ protected:
 
 };
 
+int rankIndexToInt(char c);
+int fileIndexToInt(char c);
+
 #endif

@@ -259,3 +259,74 @@ void Board::print(bool reversed) const
 
 }
 
+int rankIndexToInt(char c)
+{
+	int i;
+	switch(c)
+	{
+		case '1':
+			i=0;
+			break;
+		case '2':
+			i=1;
+			break;
+		case '3':
+			i=2;
+			break;
+		case '4':
+			i=3;
+			break;
+		case '5':
+			i=4;
+			break;
+		case '6':
+			i=5;
+			break;
+		case '7':
+			i=6;
+			break;
+		case '8':
+			i=7;
+			break;
+		default:
+			i = -1;
+	}
+	return i;
+}
+
+// convert file name to array line index
+int fileIndexToInt(char c)
+{
+	int i;
+	switch(c)
+	{
+		case 'a': case 'A':
+			i=0;
+			break;
+		case 'b': case 'B':
+			i=1;
+			break;
+		case 'c': case 'C':
+			i=2;
+			break;
+		case 'd': case 'D':
+			i=3;
+			break;
+		case 'e': case 'E':
+			i=4;
+			break;
+		case 'f': case 'F':
+			i=5;
+			break;
+		case 'g': case 'G':
+			i=6;
+			break;
+		case 'h': case 'H':
+			i=7;
+			break;
+		default:
+			i = -1;
+	}
+	return i;
+}
+
