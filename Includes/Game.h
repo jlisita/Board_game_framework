@@ -23,11 +23,13 @@ public:
 
 	void rotatePlayer();
 
+	void initialize();
+
 	virtual bool testEndOfMatch() const = 0;
 
 	virtual bool nextMove() = 0;
 
-	virtual void makeMove() = 0;
+	virtual void makeMove(int i, int j, int k, int l) = 0;
 
 	virtual bool canMove(int i, int j, int k, int l) const = 0;
 

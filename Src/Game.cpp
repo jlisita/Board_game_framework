@@ -15,11 +15,8 @@ Game::~Game()
 
 int Game::match()
 {
-	m_player1->initializePiecesList();
-	m_player2->initializePiecesList();
 
-	m_player1->placeOnBoard(&m_board);
-	m_player2->placeOnBoard(&m_board);
+	initialize();
 	
 	do
 	{
@@ -64,16 +61,10 @@ int Game::turn()
 		else
 		{
 			validMove = nextMove();
-			if(!validMove)
-			{
-				cout << "Invalid Move" << endl;
-			}
 		}
 
 
 	}while(!validMove);
-
-	makeMove();
 
 	m_board.update();
 
@@ -85,6 +76,15 @@ void Game::rotatePlayer()
 	Player* tmp(m_currentPlayer);
 	m_currentPlayer = m_nextPlayer;
 	m_nextPlayer = tmp;
+}
+
+
+void Game::initialize()
+{
+	m_player1->initializePiecesList();
+	m_player2->initializePiecesList();
+	m_player1->placeOnBoard(&m_board);
+	m_player2->placeOnBoard(&m_board);
 }
 
 std::ostream& operator<<(std::ostream& stream, Game& game)

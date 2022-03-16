@@ -41,23 +41,17 @@ bool ChessGame::nextMove()
 	k = rankIndexToInt((command)[4]);
 	l = fileIndexToInt((command)[3]);
 
-	return canMove(i,j,k,l);
+	if(!canMove(i,j,k,l))
+	{
+		return false;
+	}
 
-
+	makeMove(i,j,k,l);
 	return true;
 }
 
-void ChessGame::makeMove()
+void ChessGame::makeMove(int i, int j, int k, int l)
 {
-	string command = m_currentPlayer->getCommand();
-	int i,j,k,l;
-
-	i = rankIndexToInt((command)[1]);
-	j = fileIndexToInt((command)[0]);
-	k = rankIndexToInt((command)[4]);
-	l = fileIndexToInt((command)[3]);
-
-
 	Piece* piece = m_board.removePiece(i,j);
 	if(m_board.isOccupied(k,l))
 	{

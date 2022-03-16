@@ -17,7 +17,7 @@ public:
 
 	virtual bool nextMove();
 
-	virtual void makeMove();
+	virtual void makeMove(int i, int j, int k, int l);
 
 	virtual bool canMove(int i, int j, int k, int l) const;
 
