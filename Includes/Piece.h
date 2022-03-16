@@ -33,6 +33,10 @@ public:
 
 	PieceColor getColor() const;
 
+	bool hasMoved() const;
+
+	void setHasMoved();
+
 	void updatePosition(int i, int j);
 
 	virtual bool isAllowedMove(int i, int j) const = 0;
@@ -47,6 +51,7 @@ protected:
 	std::vector<int> m_historyRaw;
 	std::vector<int> m_historyColumn;
 	PieceColor m_color;
+	bool m_hasMoved;
 };
 
 std::ostream& operator<<(std::ostream& stream, Piece& piece);

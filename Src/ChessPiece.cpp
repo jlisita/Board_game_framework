@@ -147,11 +147,11 @@ bool Pawn::isAllowedMove(int i, int j) const
 {
 	if(getColor() == WHITE)
 	{
-		return (i==1) && (j==0);
+		return ( (i==1) || ((i==2) && (!hasMoved()) )) && (j==0);
 	}
 	else
 	{
-		return (i==-1) && (j==0);
+		return ( (i==-1) || ((i==-2) && (!hasMoved()) )) && (j==0);
 	}
 }
 

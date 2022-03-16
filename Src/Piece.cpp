@@ -6,7 +6,7 @@
 using namespace std;
 
 Piece::Piece(int initialRaw, int initialColumn, PieceColor color): 
-m_raw(initialRaw), m_column(initialColumn), m_color(color)
+m_raw(initialRaw), m_column(initialColumn), m_color(color), m_hasMoved(false)
 {
 }
 
@@ -49,8 +49,17 @@ int Piece::getLastColumn() const
 	return m_historyColumn.back();
 }
 
+bool Piece::hasMoved() const
+{
+	return m_hasMoved;
+}
+
 void Piece::updatePosition(int i, int j)
 {
+	if(i!=m_raw || j!=m_column)
+	{
+		m_hasMoved = true;
+	}
 	m_historyRaw.push_back(m_raw);
 	m_historyColumn.push_back(m_column);
 	m_raw = i;
