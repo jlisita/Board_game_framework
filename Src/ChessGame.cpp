@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cctype>
+#include <sstream>
 
 #include "ChessGame.h"
 #include "ChessPlayer.h"
@@ -13,6 +15,7 @@ ChessGame::ChessGame():Game(8,8)
 	m_currentPlayer = m_player1;
 	m_nextPlayer = m_player2;
 	m_endOfMatch = false;
+	m_indexMoves = 0;
 }
 
 ChessGame::~ChessGame()
@@ -24,6 +27,7 @@ ChessGame::~ChessGame()
 void ChessGame::print(std::ostream& stream) const
 {
 	m_board.print(m_currentPlayer->getColor()==BLACK);
+	stream << m_recordedMoves;
 }
 
 bool ChessGame::testEndOfMatch() const
@@ -47,6 +51,7 @@ bool ChessGame::nextMove()
 	}
 
 	makeMove(i,j,k,l);
+	updateRecordedMoves();
 	return true;
 }
 
@@ -107,6 +112,23 @@ bool ChessGame::testCommand(string command)
 	{
 		return false;
 	}
+}
+
+void ChessGame::updateRecordedMoves()
+{
+	stringstream ss;
+	if(m_currentPlayer->getColor()==WHITE)
+	{
+		m_indexMoves++;
+		ss << m_indexMoves << ". ";
+		m_recordedMoves += ss.str();
+
+	}
+	m_recordedMoves += tolower(m_currentPlayer->getCommand()[0]);
+	m_recordedMoves += tolower(m_currentPlayer->getCommand()[1]);
+	m_recordedMoves += tolower(m_currentPlayer->getCommand()[3]);
+	m_recordedMoves += tolower(m_currentPlayer->getCommand()[4]);
+	m_recordedMoves += " ";
 }
 
 

@@ -23,9 +23,12 @@ public:
 
 	virtual bool testCommand(std::string command);
 
+	virtual void updateRecordedMoves();
+
 private:
 
-	std::string RecordedMoves;
+	int m_indexMoves;
+	std::string m_recordedMoves;
 
 };
 

@@ -35,6 +35,8 @@ public:
 
 	virtual bool testCommand(std::string command) = 0;
 
+	virtual void updateRecordedMoves() = 0;
+
 
 protected:
 
