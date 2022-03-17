@@ -2,6 +2,7 @@
 #include <string>
 #include <cctype>
 #include <sstream>
+#include <typeinfo>
 
 #include "ChessGame.h"
 #include "ChessPlayer.h"
@@ -80,8 +81,8 @@ bool ChessGame::canMove(int i, int j, int k, int l) const
 		cout << "This is an adverssary piece" << endl;
 		return false;
 	}
-	if(!m_board.isEmptyBetween(i,j,k,l))
-	{
+	if(!m_board.isEmptyBetween(i,j,k,l) && typeid(*m_board.getPiece(i,j))!=typeid(Knight)) 
+	{	
 		cout << "Piece is blocking this move" << endl;
 		return false;
 	}
