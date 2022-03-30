@@ -164,13 +164,27 @@ bool Pawn::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 	{
 		return false;
 	}
-	if(getColor() == WHITE)
+	if(!board.isCapturingPiece(i,j,k,l))
 	{
-		return ( (k-i==1) || ((k-i==2) && (!hasMoved()) )) && (l-j==0);
+		if(getColor() == WHITE)
+		{
+			return ( (k-i==1) || ((k-i==2) && (!hasMoved()) )) && (l-j==0);
+		}
+		else
+		{
+			return ( (k-i==-1) || ((k-i==-2) && (!hasMoved()) )) && (l-j==0);
+		}
 	}
 	else
 	{
-		return ( (k-i==-1) || ((k-i==-2) && (!hasMoved()) )) && (l-j==0);
+		if(getColor() == WHITE)
+		{
+			return (k-i==1) && ((l-j==1) || (l-j==-1)) ;
+		}
+		else
+		{
+			return (k-i==-1) && ((l-j==1) || (l-j==-1)) ;
+		}
 	}
 }
 

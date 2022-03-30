@@ -155,6 +155,15 @@ bool Board::isEmptyBetween(int i, int j, int k, int l) const
 	return true;
 }
 
+bool Board::isCapturingPiece(int i, int j, int k, int l) const
+{
+	if(isOccupied(k,l) && (getPiece(i,j)->getColor() != getPiece(k,l)->getColor()))
+	{
+		return true;
+	}
+	return false;
+}
+
 
 void Board::print(bool reversed) const
 {

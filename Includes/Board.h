@@ -28,6 +28,8 @@ public:
 
 	bool isEmptyBetween(int i, int j, int k, int l) const;
 
+	bool isCapturingPiece(int i, int j, int k, int l) const;
+
 	void print(bool reversed) const;
 
 
