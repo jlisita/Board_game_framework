@@ -12,7 +12,7 @@ public:
 
 	virtual ~King();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 
@@ -29,7 +29,7 @@ public:
 
 	virtual ~Queen();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 
@@ -46,7 +46,7 @@ public:
 
 	virtual ~Bishop();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 
@@ -63,7 +63,7 @@ public:
 
 	virtual ~Knight();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 
@@ -80,7 +80,7 @@ public:
 
 	virtual ~Rook();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 
@@ -97,7 +97,7 @@ public:
 
 	virtual ~Pawn();
 
-	virtual bool isAllowedMove(int i, int j) const;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const;
 
 	virtual void print(std::ostream& stream) const;
 

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 
+class Board;
 
 enum PieceColor
 {
@@ -39,7 +40,7 @@ public:
 
 	void updatePosition(int i, int j);
 
-	virtual bool isAllowedMove(int i, int j) const = 0;
+	virtual bool isAllowedMove(Board const& board, int i, int j, int k, int l) const = 0;
 
 	virtual void print(std::ostream& stream) const = 0;
 

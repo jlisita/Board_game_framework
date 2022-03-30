@@ -2,6 +2,7 @@
 #include <string>
 
 #include "ChessPiece.h"
+#include "Board.h"
 
 using namespace std;
 
@@ -13,9 +14,9 @@ King::~King()
 {
 }
 
-bool King::isAllowedMove(int i, int j) const
+bool King::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
-	 return isOneSquare(i,j);
+	 return isOneSquare(k-i,l-j);
 }
 
 void King::print(std::ostream& stream) const
@@ -39,9 +40,14 @@ Queen::~Queen()
 {
 }
 
-bool Queen::isAllowedMove(int i, int j) const
+bool Queen::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
-	 return isDiagonal(i,j) || isLateral(i,j);
+	if(!board.isEmptyBetween(i,j,k,l))
+	{
+		return false;
+	}
+
+	return isDiagonal(k-i,l-j) || isLateral(k-i,l-j);
 }
 
 void Queen::print(std::ostream& stream) const
@@ -65,9 +71,13 @@ Bishop::~Bishop()
 {
 }
 
-bool Bishop::isAllowedMove(int i, int j) const
+bool Bishop::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
-	 return isDiagonal(i,j);
+	if(!board.isEmptyBetween(i,j,k,l))
+	{
+		return false;
+	}
+	return isDiagonal(k-i,l-j);
 }
 
 void Bishop::print(std::ostream& stream) const
@@ -91,9 +101,10 @@ Knight::~Knight()
 {
 }
 
-bool Knight::isAllowedMove(int i, int j) const
+bool Knight::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
-	return ((i==2) && ((j==1) || (j==-1))) || ( (i==-2) && ((j==1) || (j==-1))) || ((i==1) && ((j==2) || (j==-2))) || ((i==-1) && ((j==2) || (j==-2))) ;
+	return ((k-i==2) && ((l-j==1) || (l-j==-1))) || ( (k-i==-2) && ((l-j==1) || (l-j==-1))) 
+	|| ((k-i==1) && ((l-j==2) || (l-j==-2))) || ((k-i==-1) && ((l-j==2) || (l-j==-2))) ;
 }
 
 void Knight::print(std::ostream& stream) const
@@ -117,9 +128,13 @@ Rook::~Rook()
 {
 }
 
-bool Rook::isAllowedMove(int i, int j) const
+bool Rook::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
-	 return isLateral(i,j);
+	if(!board.isEmptyBetween(i,j,k,l))
+	{
+		return false;
+	}
+	return isLateral(k-i,l-j);
 }
 
 void Rook::print(std::ostream& stream) const
@@ -143,15 +158,19 @@ Pawn::~Pawn()
 {
 }
 
-bool Pawn::isAllowedMove(int i, int j) const
+bool Pawn::isAllowedMove(Board const& board, int i, int j, int k, int l) const
 {
+	if(!board.isEmptyBetween(i,j,k,l))
+	{
+		return false;
+	}
 	if(getColor() == WHITE)
 	{
-		return ( (i==1) || ((i==2) && (!hasMoved()) )) && (j==0);
+		return ( (k-i==1) || ((k-i==2) && (!hasMoved()) )) && (l-j==0);
 	}
 	else
 	{
-		return ( (i==-1) || ((i==-2) && (!hasMoved()) )) && (j==0);
+		return ( (k-i==-1) || ((k-i==-2) && (!hasMoved()) )) && (l-j==0);
 	}
 }
 

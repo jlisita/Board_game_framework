@@ -81,17 +81,12 @@ bool ChessGame::canMove(int i, int j, int k, int l) const
 		cout << "This is an adverssary piece" << endl;
 		return false;
 	}
-	if(!m_board.isEmptyBetween(i,j,k,l) && typeid(*m_board.getPiece(i,j))!=typeid(Knight)) 
-	{	
-		cout << "Piece is blocking this move" << endl;
-		return false;
-	}
 	if(m_board.isOccupied(k,l) && m_board.getPiece(k,l)->getColor() == m_currentPlayer->getColor())
 	{
 		cout << "impossible to capture its own piece" << endl;
 		return false;
 	}
-	if(!m_board.getPiece(i,j)->isAllowedMove(k-i,l-j))
+	if(!m_board.getPiece(i,j)->isAllowedMove(m_board,i,j,k,l))
 	{
 		cout << "This move is not allowed for this piece" << endl;
 		return false;
